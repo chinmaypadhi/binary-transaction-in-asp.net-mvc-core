@@ -60,5 +60,19 @@ namespace binary_transaction_in_asp.net_mvc_core.Models
             return data;
         }
 
+        public void update(int id,College clg)
+        {
+            Employee data = (from k in dbs.Employees where k.EmpId == id select k).SingleOrDefault<Employee>();
+            //data.EmpId = clg.clgId;
+            data.EmpName = clg.EmpName;
+            data.EmpSalary = clg.EmpSalary;
+            Student data1 = (from k in dbs.Students where k.StudentId == id select k).SingleOrDefault<Student>();
+            dbs.SaveChanges();
+            //data1.StudentId = clg.st;
+            data1.StudentName = clg.StudentName;
+            data1.StudentCity = clg.StudentCity;
+            dbs.SaveChanges();
+        }
+
     }
 }
